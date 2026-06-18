@@ -13,7 +13,6 @@ Comprehensive documentation is available in the [`docs/`](docs/) folder:
 - **[More Documentation](docs/)** - See all available documentation
 
 ## 🚀 Quick Start
-
 ### Prerequisites
 - Python 3.13+
 - Node.js 18+
