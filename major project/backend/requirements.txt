@@ -1,0 +1,30 @@
+# --- Flask Backend ---
+Flask
+Flask-Cors
+Flask-SQLAlchemy
+psycopg2-binary
+python-dotenv
+
+# --- NLP and Classical ML ---
+textblob
+scikit-learn
+pandas
+joblib
+numpy
+reportlab
+
+# --- Hugging Face Transformer Training ---
+torch             # Required for model training/inference (GPU/CPU)
+transformers     # Core Hugging Face library
+datasets         # For handling CSV/XLSX data easily
+evaluate         # Metrics like accuracy, F1, etc.
+accelerate       # Efficient GPU/CPU training
+tqdm              # Progress bars during training
+
+# --- LLM Integration ---
+ollama            # Python client for local Ollama server (optional)
+google-generativeai  # Google Gemini API client
+
+# --- Testing ---
+pytest            # Testing framework
+

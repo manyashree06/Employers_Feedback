@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    @apply bg-background text-text-primary antialiased font-sans;
+    /* Animated, layered gradient background */
+    background:
+        radial-gradient(1200px 800px at 0% 0%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0) 60%),
+        radial-gradient(1000px 700px at 100% 0%, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0) 60%),
+        radial-gradient(900px 700px at 100% 100%, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0) 60%),
+        linear-gradient(120deg, #0b1220 0%, #0f172a 35%, #111827 60%, #0b1220 100%);
+    background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    background-attachment: fixed;
+    animation: gradientShift 18s ease-in-out infinite;
+}
+
+.card {
+    @apply bg-neutral/50 backdrop-blur-lg rounded-2xl shadow-soft border border-neutral-light/20;
+    /* Global subtle glow for all container cards */
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.20), 0 10px 15px -3px rgba(2, 6, 23, 0.08), 0 4px 6px -4px rgba(2, 6, 23, 0.06);
+}
+
+.btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-primary text-white px-6 py-3 font-semibold shadow-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105;
+}
+
+.btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl bg-neutral-light/50 backdrop-blur-lg text-text-primary px-6 py-3 font-semibold border border-neutral-light/20 hover:bg-neutral-light/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 transition-all duration-300;
+}
+
+.badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 border border-primary/30 text-primary;
+}
+
+.gradient-text {
+    @apply text-primary;
+}
+
+.animated-bg {
+    @apply animate-subtle-pulse;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating animation */
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Glow effect */
+.glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* ------------------------------ */
+/* Aurora background               */
+/* ------------------------------ */
+.aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    /* content stays above */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.aurora__blob {
+    position: absolute;
+    width: 55vw;
+    height: 55vw;
+    max-width: 900px;
+    max-height: 900px;
+    filter: blur(80px);
+    opacity: 0.45;
+    mix-blend-mode: screen;
+    transform: translate3d(0, 0, 0);
+}
+
+.aurora__blob--a {
+    background: radial-gradient(circle at 30% 30%, rgb(174, 14, 243), rgba(59, 130, 246, 0) 60%);
+    left: -15vw;
+    top: -10vh;
+    animation: auroraMoveA 5s ease-in-out infinite alternate;
+}
+
+.aurora__blob--b {
+    background: radial-gradient(circle at 70% 30%, rgba(74, 252, 92, 0.9), rgba(16, 185, 129, 0) 60%);
+    right: -10vw;
+    top: -15vh;
+    animation: auroraMoveB 7s ease-in-out infinite alternate;
+}
+
+.aurora__blob--c {
+    background: radial-gradient(circle at 40% 60%, rgba(0, 251, 243, 0.9), rgba(168, 85, 247, 0) 60%);
+    left: -12vw;
+    bottom: -20vh;
+    animation: auroraMoveC 9s ease-in-out infinite alternate;
+}
+
+.aurora__blob--d {
+    background: radial-gradient(circle at 70% 70%, rgb(254, 251, 62), rgba(245, 158, 11, 0) 60%);
+    right: -18vw;
+    bottom: -12vh;
+    animation: auroraMoveD 11s ease-in-out infinite alternate;
+}
+
+@keyframes auroraMoveA {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(12vw, 6vh, 0) scale(1.1) rotate(5deg);
+    }
+
+    100% {
+        transform: translate3d(4vw, 10vh, 0) scale(1.05) rotate(-4deg);
+    }
+}
+
+@keyframes auroraMoveB {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-10vw, 8vh, 0) scale(1.08) rotate(-6deg);
+    }
+
+    100% {
+        transform: translate3d(-4vw, 12vh, 0) scale(1.02) rotate(3deg);
+    }
+}
+
+@keyframes auroraMoveC {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(8vw, -6vh, 0) scale(1.12) rotate(6deg);
+    }
+
+    100% {
+        transform: translate3d(14vw, -2vh, 0) scale(1.05) rotate(-3deg);
+    }
+}
+
+@keyframes auroraMoveD {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-6vw, -8vh, 0) scale(1.06) rotate(4deg);
+    }
+
+    100% {
+        transform: translate3d(-12vw, -2vh, 0) scale(1.02) rotate(-2deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aurora__blob {
+        animation: none;
+    }
+}
+
+/* Subtle grain + vignette overlays for depth */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: .4;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.28) 100%);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    body {
+        animation: none;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-neutral;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply from-purple-400 to-pink-400;
+}
